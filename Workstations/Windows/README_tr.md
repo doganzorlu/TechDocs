@@ -14,26 +14,65 @@ Makalenin sonunda ulaşacağımız sistem aşağıda şematize edilmiş kurguda 
 
 ![Altyapı Genel Görünümü](assets/en/images/overview.png "Altyapı Genel Görünümü")
 
-Gerekli olan temel donanım sadece 16GB ram, en az birinci nesil e5 makine ve 250GB disk. Tüm sistemler sürekli açık olmayacak bu nedenle daha fazla donanıma ihtiyaç olmayacaktır. Development aşamasında biraz IDE için, birkaç tane konteyner için ram (db ve mikro servisler için) gerekecek.
+Gerekli olan temel donanım sadece 16GB ram, en az birinci nesil e5 makine ve 250GB disk. Tüm sistemler sürekli açık olmayacak bu nedenle daha fazla donanıma ihtiyaç olmayacaktır. Development aşamasında biraz IDE için, birkaç tane konteyner için ram (db ve mikro servisler için) gerekecek. İşletim sistemi olarak ise Versiyon 1903 Build 18362 veya daha güncel bir Windows 10 ihtiyacımız var.
 
 # Kurulum
 
 ## Temel Kurulum
 
-Yeni bir windows kurulumu yapıp hesabımıza giriş yaptıktan sonra ilk yapacağımız iş Linux alt sistemini aktive etmek. Bunun için aşağıdaki görsellerde verdiğim adımları izlemeniz yeterli olacaktır. Temelde bir windows özelliğini aktive edip ardından Microsoft Store dan ubuntu 20.04 LTS (Dökümanı yazdığım sırada en günceli bu olduğu için) kurulmasından ibaret bir işlem.
+Yeni bir windows kurulumu yapıp hesabımıza giriş yaptıktan sonra ilk yapacağımız iş Linux alt sistemini aktive etmek. Yok yok, belki de ilk yapacağımız iş Edge Browser da arama motoru olarak google ayarlamak olacak. Neyse, temelde bir windows özelliğini aktive edip ardından Microsoft Store dan ubuntu 20.04 LTS (Dökümanı yazdığım sırada en günceli bu olduğu için) kurulmasından ibaret bir işlem.
+
+### WSL Aktivasyonu
+
+Yönetici yetkileri ile (start menu->cmd->Yönetici Olarak Çalıştır) bir konsol açıp;
+
+```console
+dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
+```
+komutunu kullanabiliriz. Ya da diğer bir alternatif olarak aşağıda gösterildiği gibi GUI arayüzden öncelikle Windows Linux Alt Sistemi'ni etkinleştiriyoruz. 
 
 ![Başlangıç Menüsü](assets/tr/images/startmenu.png "Başlangıç Menüsünde Ayarlar Simgesi")
 ![Uygulamalar](assets/tr/images/applications.png "Uygulamalar")
 ![Program ve Özellikler](assets/tr/images/programsandfeatures.png "Uygulamalar ve Özellikler")
 ![Windows Özelliklerini Aç Kapat](assets/tr/images/windowsfeatures.png "Windows Özelliklerini Aç Kapat")
 ![Linux için Windows Alt Sistemi](assets/tr/images/linuxsubsystems.png "Linux için Windows Alt Sistemi")
+
+Bir opsiyon olarak WSL2.0 kullanabilirsiniz (Not en az Versiyon 1903 Build 18362 bir sürüm gerekiyor). Daha iyi performans vaad eden bu sistemi etkinleştirmek için öncelikle;
+
+```console
+dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
+shutdown /t /t 0
+```
+
+diyerek gerekli sanallaştırma platformunu etkinleştriyoruz. Ardından da kernel güncellemelerini 
+
+https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+bağlantısından alıp çift tıklayarak yapıyoruz. 
+
+### UBUNTU Kurulumu
+
+Artık Microsoft Store'dan ubuntu kurulumu yapabiliriz. Bu arada chocolatey windows paket yöneticisine de bir göz atmanızı tavsiye ederim;
+
+http://chocolatey.org
+
 ![UBUNTU 20.04 LTS](assets/tr/images/storeubuntu.png "UBUNTU 20.04 LTS")
 
-Bu aşamalardan birisinde restart isterse sistem restart ediniz. Artık ikinci aşamaya geçebiliriz. Bu aşamada geliştiriciler ve devops adminleri için rahat bir ortam oluşturacağız. İlk olarak [BURAYA TIKLAYARAK](https://code.visualstudio.com "VSCode Sitesi") VSCode sitesinden VSCode uyglamasını indirip kuralım.
+Bu aşamalardan birisinde restart isterse sistem restart ediniz. Artık ikinci aşamaya geçebiliriz. 
+
+## Geliştirici Araçları
+
+Bu aşamada geliştiriciler ve devops adminleri için rahat bir ortam oluşturacağız. 
+
+### VSCode
+
+İlk olarak [BURAYA TIKLAYARAK](https://code.visualstudio.com "VSCode Sitesi") VSCode sitesinden VSCode uyglamasını indirip kuralım. Burada iki çeşit kurulum dosyası var. Ben sistem için olanı seçiyorum. Kullandığım makineyi başka bir kullanıcı kullandığında da bu editörden yararlanabilsin istiyorum.
 
 ![VSCode Download](assets/tr/images/vscodedownload.png "VSCode Download")
 
 Benim geliştirme yaparken sürekli kullandığım bu editörden öte uygulama ile sistem içinde düzenleyeceğimiz tüm metin dosyalarını çok kolaylıkla düzenleyebileceğiz.
+
+### Windows Terminal
 
 Ardından Microsoft Store Windows Terminal uygulamasını kuralım.
 
@@ -51,13 +90,15 @@ JSON dosyaları, kurulumda itiraz etmedi ve desteklediğin tüm dosyaları kendi
 
 Bu standart bir JSON dosyası. Bu arada bin yıl öncede takılıp kalan yeminli MS karşıtları için bir ufak hatırlatma: MS epeydir CLI üzerinden metin dosyaları ile yapılandırmaları saklamaya başladı. Binary yapılandırma dosyalarının çıkardığı sorunlara karşı geliştirdikleri bir iyileştirme bu. Endüstri standardı yapılandırma dosyalarını da bir metin editörü ile rahatlıkla düzenleyebiliyoruz. Neyse. Bu yapılandırma dosyasının yapısı size tanıdık gelecek. Üst tarafta bir default profil var. Bunu kendinize göre düzenlersiniz. Ben default olarak CMD.EXE yi seçtim. Hadi buraya ubuntu altsistemimizi ekleyelim.
 
+Eğer ubuntu Windows Terminal listesine otomatik gelmediyse elinizle aşağıdaki şekilde ekleyebilirsiniz. 
+
 ![Windows Terminal Ubuntu Ekleme](assets/en/images/windowsterminaladdubuntu.png "Windows Terminal Ubuntu Ekleme")
 
 List anahtarının altına bir anahtar ekleyip ardından içini yukarıdaki gibi doldurun. guid sizde değişecektir. Bu bilgiyi almak için;
 
 ![Ubuntu Başlatma](assets/tr/images/openubuntu.png "Ubuntu Başlatma")
 
-başlangıç menüsünde ubuntu yazıp başlatıcıyı bulup çalıştırın. Ardından;
+başlangıç menüsünde ubuntu yazıp başlatıcıyı bulup çalıştırın. İlk başta size kullanıcı kodu ve parola belirlemenizi isteyen bir ekran gelecek. Buraya linux içinde kullanacağınız kullanıcı kodu ve parolayı verin. Ardından;
 
 ```console
 # uuidgen
@@ -66,15 +107,17 @@ komutunu çalıştırıp alt sistemin uuid sini öğrenebilirsiniz.
 
 ![Ubuntu getuuid](assets/en/images/ubuntugetuid.png "Ubuntu getuuid")
 
-Yapılandırma dosyamızı kaydedip kapatıyoruz ve artık ortamımız epeyce hazır. VSCode u ubuntu alt sisteminden çalıştırmayacağımız için (bazen bu metodu da kullanıyorum, o durumda yapılandırılacak sistem windows yerine ubuntu alt sistemi oluyor) git kurmamız için bulunmaz zaman şu an. Ben git kullanıyorum siz başka birşey kullanıyorsanız o sistemin istemcisini kurabilirsiniz. Adresimiz https://git-svn.com adresinden uygulamayı indirip kuruyoruz.
-
-![GIT Ana Sayfası](assets/en/images/githomepage.png "GIT Anasayfası")
-
-Yine terminal yapılandırma dosyasında birkaç küçük kozmetik düzenleme yaptım. Belki hoşunuza gider:
+Yapılandırma dosyamızı kaydedip kapatıyoruz ve artık ortamımız epeyce hazır. Birkaç küçük kozmetik düzenlemenin sizin de hoşunuza gideceğini düşünüyorum:
 
 ![Yararlı Yapılandırma](assets/en/images/handysettings.png "Yararlı Yapılandırma")
 
-defaults anahtarı List içindeki tüm girdilerde ortak olarak çalışır. Herhangi bir konsolu farklı çalıştırmak istiyorsanız ilgili girdide değişiklik yapmanız yeterki olacaktır.
+defaults anahtarı List içindeki tüm girdilerde ortak olarak çalışır. Herhangi bir konsolu farklı çalıştırmak istiyorsanız ilgili girdide değişiklik yapmanız yeterki olacaktır. Son bir not, başlangıç menüsünden bu uygulamayı görev çubuğuna sabitleyebilirsiniz inanın işinizi çok kolaylaştıracak. 
+
+## Git
+
+VSCode u ubuntu alt sisteminden çalıştırmayacağımız için (bazen bu metodu da kullanıyorum, o durumda yapılandırılacak sistem windows yerine ubuntu alt sistemi oluyor) git kurmamız için bulunmaz zaman şu an. Ben git kullanıyorum siz başka birşey kullanıyorsanız o sistemin istemcisini kurabilirsiniz. Adresimiz https://git-svn.com adresinden uygulamayı indirip kuruyoruz.
+
+![GIT Ana Sayfası](assets/en/images/githomepage.png "GIT Anasayfası")
 
 Ben tüm anlık işlerimi VSCode içindeki kod yönetimi kısmından, depo operasyonlarını ise CLI dan yaptığım için bir GUI kurmuyorum. Bu hem cross platform bir rahatlık sağlıyor hem de gerek duymuyorum açıkçası.
 
@@ -82,11 +125,23 @@ Buraya kadar kurduğumuz uygulamalarda her ne soruyorsa evet diyerek ilerleyip s
 
 İlk aşama bu şekilde tamamlandı. Şu anda geliştirme için gerekli dilin yüklenmesi yeterki olacak. Ben tüm geliştirmelerimi python ve node ile yaptığımdan sadece bu ikisini kuracağım siz kendinize göre özelleştirebilirsiniz.
 
-Adresimiz bu sefer https://www.python.org. Bu adresten python kurulumumuzu yapacağız.
+## Python
+
+Python, tıpkı Windows Terminal gibi Microsoft Store'dan kurulabiliyor. Ben kendii sitesinden kurmayı tercih ediyorum. Siz isterseniz oradan da kurabilirsiniz. Bunu tercih ederseniz özellikle pip ile paket kurulumlarında ekstradan bir PATH tanımlaması yapmanız gerekecektir (pip ne yapacağınızı söyleyecektir size). Adresimiz bu sefer https://www.python.org. Bu adresten python kurulumumuzu yapacağız.
 
 ![python Ana Sayfası](assets/en/images/pythonhomepage.png "python Anasayfası")
 
-Ben kurulumlarda root dizinde python dizinini tercih ediyorum. Hem ulaşması kolay hem de zateb çok uzun olan PATH daha da uzayıp gitmiyor. Eğer sizde path limite gelmişse bunu disable etmeniz gerekebilir.
+Ben kurulumlarda root dizinde python dizinini tercih ediyorum. Hem ulaşması kolay hem de zateb çok uzun olan PATH daha da uzayıp gitmiyor. Eğer sizde path limite gelmişse bunu disable etmeniz gerekebilir. Pip paket yöneticimizi bir güncelleyelim önce;
+
+```console
+python -m pip install --upgrade pip
+```
+
+ Virtual Environment kullanımı çok iyi bir pratiktir. Python için pipenv çok tercih ettiğim bir araç ve hemen yeri gelmişken onu da kuralım;
+
+```console
+pip3 install pipenv
+```
 
 İlk olarak her eve lazım JDK kuralım. Ben https://www.oracle.com/java/technologies/javase-jdk15-downloads.html adresinden yükledim. 
 
@@ -98,7 +153,7 @@ Sırada NodeJS kurulumu var. https://nodejs.org adresinden ulaşıp kurulumu yap
 
 ![NodeJS İndirme Sayfası](assets/en/images/nodejsdownload.png "NodeJS İndirme Sayfası")
 
-Ben genelde LTS sürümleri kullanıyorum. Gecelik sürümleri denediğim bir başka makinem daha var. Denemelerimi orada yapıyorum. Bu makinenin kurulumu bitince günlük tam image backup alacağız ve süreklilik konusunu çözeceğiz. Zira makine kurulumuna bağlı zaman kaybetmek istemiyorum.
+Ben genelde LTS sürümleri kullanıyorum. Gecelik sürümleri denediğim bir başka makinem daha var. Denemelerimi orada yapıyorum. Bu arada node için doğal modülleri derlemek gerekirse gerekli araçları yüklemesini kurulum sırasında seçebiliriz. Bunu seçerseniz diğer araç gereçlerle birlikte chocolatey (Hatırladınız sanırım) de kurulacak ve sistemde gerekli tüm yamalar yapılacak, kendisine gerekli python kendi extension ları içine kurulacak ve gerekli yetkilendirmeler powershell için otomatik olarak oluşturulacaktır. Komple bir paket yöneticisi olduğu için oldukça fazla değişiklik yapacaktır. Bu makinenin kurulumu bitince günlük tam image backup alacağız ve süreklilik konusunu çözeceğiz. Zira makine kurulumuna bağlı zaman kaybetmek istemiyorum.
 
 Yolculuğumuzun üçte birlik kısmına yaklaştık diyebiliriz. Bu aşamadan sonra zaten elle tutulmaz olan sistemimizde daha da sanal ortamlar oluşturacağız. Herşey mış gibi olacak bu bölümde.
 
@@ -156,7 +211,7 @@ $ sudo vi 00-installer-config.yaml
 
 Bu bölüme eğer yoksa enp0s8 girdisini oluşturup altında yukarıdaki adresleri veriyoruz. 192.168.218.0/24 adresi, virtualbox içinde öntanımlı olarak ilk Host Only interface için belirlenmiş adres. Host makine 192.168.218.1/24 adresini alıyor kendisine. Özelleştirilmiş bir network de kullanılabilir ama bazen sorun çıkarıyor. Sizdeki yapılandırmada ön tanımlı adresi VirtualBox ana makine ağ yöneticisinden görebilirsiniz.
 
-![VirtualBox Host-Only Bağdaştırıcı IP Adresi](assets/en/images/vmhostonlynicip.png "VirtualBox Host-Only Bağdaştırıcı IP Adresi")
+![VirtualBox Host-Only Bağdaştırıcı IP Adresi](assets/tr/images/vmhostonlynicip.png "VirtualBox Host-Only Bağdaştırıcı IP Adresi")
 
 SSH Server aktivasyonu ve portu firewall da açmak için ise
 
@@ -208,8 +263,8 @@ $ microk8s enable dns dashboard storage
 Eğer root yerine kendi kullanıcınız ile sistemi kullanacaksanız (önerimdir) 
 
 ```console
-$ sudo usermod -a -G microk8s <kullaniciadi>
-$ sudo chown -f -R <kullaniciadi> ~/.kube
+$ sudo usermod -a -G microk8s \<kullaniciadi\>
+$ sudo chown -f -R \<kullaniciadi\> ~/.kube
 ```
 
 exit ile oturumu kapatıp, tekrar bağlanmak gerekli olacaktır. Bu aşamada dashboard erişimi için default-token gerekecek. Hemen onu da alalım;
