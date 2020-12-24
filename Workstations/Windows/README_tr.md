@@ -14,7 +14,7 @@ Makalenin sonunda ulaşacağımız sistem aşağıda şematize edilmiş kurguda 
 
 ![Altyapı Genel Görünümü](assets/en/images/overview.png "Altyapı Genel Görünümü")
 
-Gerekli olan temel donanım sadece 16GB ram, en az birinci nesil e5 makine ve 250GB disk. Tüm sistemler sürekli açık olmayacak bu nedenle daha fazla donanıma ihtiyaç olmayacaktır. Development aşamasında biraz IDE için, birkaç tane konteyner için ram (db ve mikro servisler için) gerekecek. İşletim sistemi olarak ise Versiyon 1903 Build 18362 veya daha güncel bir Windows 10 ihtiyacımız var.
+Gerekli olan temel donanım sadece 16GB ram, en az birinci nesil e5 makine ve 250GB disk. Tüm sistemler sürekli açık olmayacak bu nedenle daha fazla donanıma ihtiyaç olmayacaktır. Development aşamasında biraz IDE için, birkaç tane konteyner için ram (db ve mikro servisler için) gerekecek. İşletim sistemi olarak ise 64bit bir Windows 10 ihtiyacımız var.
 
 # Kurulum
 
@@ -29,7 +29,7 @@ Yönetici yetkileri ile (start menu->cmd->Yönetici Olarak Çalıştır) bir kon
 ```console
 dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux /all /norestart
 ```
-komutunu kullanabiliriz. Ya da diğer bir alternatif olarak aşağıda gösterildiği gibi GUI arayüzden öncelikle Windows Linux Alt Sistemi'ni etkinleştiriyoruz. 
+komutunu kullanabiliriz. Ya da diğer bir alternatif olarak aşağıda gösterildiği gibi GUI arayüzden öncelikle Windows Linux Alt Sistemi'ni etkinleştiriyorebiliriz. 
 
 ![Başlangıç Menüsü](assets/tr/images/startmenu.png "Başlangıç Menüsünde Ayarlar Simgesi")
 ![Uygulamalar](assets/tr/images/applications.png "Uygulamalar")
@@ -37,14 +37,14 @@ komutunu kullanabiliriz. Ya da diğer bir alternatif olarak aşağıda gösteril
 ![Windows Özelliklerini Aç Kapat](assets/tr/images/windowsfeatures.png "Windows Özelliklerini Aç Kapat")
 ![Linux için Windows Alt Sistemi](assets/tr/images/linuxsubsystems.png "Linux için Windows Alt Sistemi")
 
-Bir opsiyon olarak WSL2.0 kullanabilirsiniz (Not en az Versiyon 1903 Build 18362 bir sürüm gerekiyor). Daha iyi performans vaad eden bu sistemi etkinleştirmek için öncelikle;
+Bir opsiyon olarak WSL2.0 kullanabiliriz (Not en az Versiyon 1903 Build 18362 bir sürüm gerekiyor). Daha iyi performans vaad eden bu sistemi etkinleştirmek için öncelikle;
 
 ```console
 dism.exe /online /enable-feature /featurename:VirtualMachinePlatform /all /norestart
 shutdown /t /t 0
 ```
 
-diyerek gerekli sanallaştırma platformunu etkinleştriyoruz. Ardından da kernel güncellemelerini 
+diyerek gerekli sanallaştırma platformunu etkinleştriyoruz. Ardından da kernel güncellemelerini;
 
 https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
 
