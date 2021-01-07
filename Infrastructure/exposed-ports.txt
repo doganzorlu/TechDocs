@@ -1,0 +1,4 @@
+Exposed Ports:
+
+5432 : Postgres
+5000 : PgAdmin4
