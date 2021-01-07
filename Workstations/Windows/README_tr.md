@@ -426,4 +426,82 @@ Bu haftalık bu kadar. İki günlük hafta sonu tatili için geldiğimiz aşama 
 Şimdilik kalın sağlıcakla.
 
 
+# Nerede kalmıştık ?
 
+Geliştirme için gerekli olacak birkaç tane servisin yapılandırma dosyalarını ekledim. Bu dosyalardaki credential bilgileri admin123 parolası kullanıyor. Eğer production da bu yapılandırmaları kullanacak olursanız değiştirmeniz gerekir. Çalışırken yeni başlayanlar için belki daha kolay olur diye minikube kurup, geliştirme için bunu da opsiyon olarak ekleyeyim istedim. Öncelikle kurulum çok kolay. 
+
+[MINIKUBE İndirme Linki](https://storage.googleapis.com/minikube/releases/latest/minikube-installer.exe "MINIKUBE İndirme Linki")
+
+Ben genelde bilgisayarımda c:\bin diye bir dizin oluşturup kurulum gerektirmeyip kendi başına çalışan programları buraya koyuyorum. PATH değişkeninin de içine ekliyorum durup durup path yazmaya da gerek kalmıyor. Tavsiye ederim. Bu yukarıdan Windows dosyasını indirelim. İndirdiğiniz dosyayı c:\bin klasörüne koyabilirsiniz (ya da siz nereye isterseniz, kurulum gerektirmez) Ardından işimizi kolaylaştıracak olan kubectl.exe dosyasını;
+
+[kubectl İndirme Linki](https://storage.googleapis.com/kubernetes-release/release/v1.20.0/bin/windows/amd64/kubectl.exe "kubectl İndirme linki")
+
+bağlantısıdan indirip c:\bin klasörüne koyabilirsiniz (ya da siz nereye isterseniz, kurulum gerektirmez)
+
+Artık minikube kurmaya hazırız.
+
+```cosole
+C:\bin> minikube start --driver=virtualbox
+```
+
+komutu ile makinemizde kurulu VirtualBox ı kullanarak kendi image dosyasını indirip kendi VM ini oluşturacaktır. Driver parametresini vermezseniz kendisi anlayacaktır. Bu kadar. Hyper-V tavsiye etmiyorum zira cluster ile ilgili her komut için mutlaka "run as admin" gerektiriyor. İstediğiniz kadar kullanıcınızı hyper-v yöneticilerine ekleyin, değişmiyor.
+
+Bu projenin kök dizininde Infrastructure diye bir klasör göreceksiniz. Haydi oradaki mysql servisini deploy edelim;
+
+```console
+C:\bin> cd <clonedir>\Infrastructure\mysql
+C:\<clonedir>\Infrastructure\mysql> kubectl apply -f mysql-configmap
+C:\<clonedir>\Infrastructure\mysql> kubectl apply -f mysql-storage
+C:\<clonedir>\Infrastructure\mysql> kubectl apply -f mysql-deployment
+C:\<clonedir>\Infrastructure\mysql> kubectl apply -f mysql-service
+```
+
+evet bu kadar. Bu dosyaların ne olduğunu daha sonra açıklayacağım. Servisin durumu nedir bakalım;
+
+```console
+C:\<clonedir>\Infrastructure\mysql> kubectl describe deployment mysql
+Name:               mysql
+Namespace:          default
+CreationTimestamp:  Thu, 07 Jan 2021 22:52:32 +0300
+Labels:             <none>
+Annotations:        deployment.kubernetes.io/revision: 1
+Selector:           app=mysql
+Replicas:           1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:       Recreate
+MinReadySeconds:    0
+Pod Template:
+  Labels:  app=mysql
+  Containers:
+   mysql:
+    Image:      mysql:5.6
+    Port:       3306/TCP
+    Host Port:  0/TCP
+    Environment Variables from:
+      mysql-config  ConfigMap  Optional: false
+    Environment:    <none>
+    Mounts:
+      /var/lib/mysql from mysql-persistent-storage (rw)
+  Volumes:
+   mysql-persistent-storage:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  mysql-pv-claim
+    ReadOnly:   false
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   mysql-56f96d4c56 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  25m   deployment-controller  Scaled up replica set mysql-56f96d4c56 to 1
+```
+Herşey yolunda görünüyor. Burada acele etmeyin image download edilirken yukarıdaki bilgilerde download edildiğini görebilirsiniz. Bir sorun olursa da yine sorunu tespit edeeğiniz yer bu çıktı.
+
+Bu şekilde mikrok8s yanında bir de minikube kurulumu yapmış olduk. Sadece development yapacak başka da birşeyle uğraşmayacaklar için sadece bu platform yeterli olacaktır.
+
+Bugünlük de bu kadar. Sonraki bölümde iki node kubernetes ve bir node controller makinelerimizi yapılandıracağız. Bu makineler üzerinde ceph dosya sistemini kurup üzerinde datacenter yapılandırmamızı yapıp 2DC, 3Node, 2OSD gibi volume tanımlarımızı yapacağız. Ardından kubernetes sistemimizin persistent storage olarak bu yapıyı kullanmasını sağlayacağız. Tabi en keyifli kısmı arıza simülasyonlarını yapacağız. Node kapatıp servislerin kesintiye uğramadan devam ettiğini göreceğiz :)
+
+Şimdilik bu kadar, kalın sağlıcakla.
