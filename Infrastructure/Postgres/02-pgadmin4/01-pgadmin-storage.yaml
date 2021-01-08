@@ -2,6 +2,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: pgadmin-persistent-volume-claims-cfg
+  namespace: postgres
 spec:
   accessModes:
     - ReadWriteOnce

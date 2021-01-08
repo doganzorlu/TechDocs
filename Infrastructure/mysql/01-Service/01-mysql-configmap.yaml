@@ -4,5 +4,9 @@ metadata:
   name: mysql-config
   labels:
     app: mysql
+  namespace: mysql
 data:
   MYSQL_ROOT_PASSWORD: admin123
+  PMA_HOST: mysql
+  PMA_PORT: 3306
+  

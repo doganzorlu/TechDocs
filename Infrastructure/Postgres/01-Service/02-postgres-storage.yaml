@@ -1,26 +1,31 @@
-apiVersion: v1
 kind: PersistentVolume
+apiVersion: v1
 metadata:
-  name: mysql-pv-volume
+  name: postgres-pv-volume
   labels:
     type: local
+    app: postgres
+  namespace: postgres
 spec:
   storageClassName: manual
   capacity:
-    storage: 20Gi
+    storage: 5Gi
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   hostPath:
     path: "/mnt/data"
 ---
-apiVersion: v1
 kind: PersistentVolumeClaim
+apiVersion: v1
 metadata:
-  name: mysql-pv-claim
+  name: postgres-pv-claim
+  labels:
+    app: postgres
+  namespace: postgres
 spec:
   storageClassName: manual
   accessModes:
-    - ReadWriteOnce
+    - ReadWriteMany
   resources:
     requests:
-      storage: 20Gi
+      storage: 5Gi

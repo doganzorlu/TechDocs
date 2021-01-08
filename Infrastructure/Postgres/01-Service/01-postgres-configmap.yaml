@@ -4,6 +4,7 @@ metadata:
   name: postgres-config
   labels:
     app: postgres
+  namespace: postgres
 data:
   POSTGRES_DB: postgresdb
   POSTGRES_USER: admin

@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: postgres
+  name: pgadmin
   labels:
-    app: postgres
+    app: pgadmin
+  namespace: postgres
 spec:
   type: LoadBalancer
   ports:
-   - port: 5432
+   - port: 80
   selector:
-   app: postgres
+   app: pgadmin

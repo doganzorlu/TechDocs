@@ -1,0 +1,51 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: kafka-monitor
+  annotations:
+  labels:
+    app: kafka-monitor
+spec:
+  ports:
+  - protocol: TCP
+    port: 9999
+    targetPort: 9999
+  selector:
+    app: kafka-monitor
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-monitor
+  namespace: kafka-ca1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-monitor
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: kafka-monitor
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - name: kafka-monitor
+        image: d1egoaz/docker-kafka-monitor@sha256:307e59f9db70a34ab659a5714010a805440b65d1b948cb79f6564a4567ca0f2c
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 256m
+            memory: 500Mi
+          requests:
+            cpu: 256m
+        volumeMounts:
+          - name: kafka-monitor-volume
+            mountPath: /opt/kafka-monitor/config/
+      volumes:
+        - name: kafka-monitor-volume
+          configMap:
+            name: kafka-monitor-volume
