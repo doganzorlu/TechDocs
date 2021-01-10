@@ -8,5 +8,5 @@ metadata:
 data:
   MYSQL_ROOT_PASSWORD: admin123
   PMA_HOST: mysql
-  PMA_PORT: 3306
+  PMA_PORT: "3306"
   

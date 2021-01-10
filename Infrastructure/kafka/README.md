@@ -55,7 +55,7 @@ kubectl -n kafka-ca1 get statefulsets
 NAME    READY   AGE
 kafka   3/3     10m
 ```
-Statefulset ler de tamam görünüyor.
+Statefulset ler de tamam görünüyor. Kafka kendi cluster nodları arasında kendisi veri bütünlüğü sağladığı için Statefulset olarak oluşturuyor pod ları. Böylelikle her bir pod için kalıcı depolama alanı o pod için özel oluyor.
 ```console
 kubectl -n kafka-ca1 get services
 NAME                TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)             AGE
