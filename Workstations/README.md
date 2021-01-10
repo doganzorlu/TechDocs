@@ -1,3 +1,3 @@
 # İş İstasyonları
 
-* [Windows İş İstasyonu](Windows/README.md "Windows")
+* [Windows İş İstasyonu](Windows "Windows")
