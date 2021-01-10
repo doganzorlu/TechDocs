@@ -1,7 +1,6 @@
-# Technical Documents
+# Teknik Dökümanlar
 
-This repository is built for sharing any kind of technical documentation about computer science with the ecosystem players. Used multiple localization for each document depends on readers requirements.
+Bu depo, bir geliştirici ve admin olarak kullandığım ve faydalı olduğunu düşündüğüm uygulamaları, benimle benzer uğraşılar içerisinde olan diğer arkadaşlarımın da kullanabilmesi için yazılı hale getirmek ve zaman içerisinde biriken bilgileri buradan paylaşmak amacıyla hazırlandı.
 
-* Workstations: [English](Workstations/README.md "Workstation configuration").
-
-A roadmap for anyone who is a member of any development team to create a great windows workstation that is powerful, reliable and user friendly.
+* [İş İstasyonları](Workstations/README.md "İş İstasyonu Yapılandırmaları")
+* [Altyapı Bileşenleri](Infrastructure/README.md "Altyapı Bileşenleri")

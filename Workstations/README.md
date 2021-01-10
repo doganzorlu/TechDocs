@@ -1,3 +1,3 @@
-# Workstations
+# İş İstasyonları
 
-* Windows Workstation: [Türkçe](Windows/README_tr.md "Windows"), [English](Windows/README.md "Windows").
+* [Windows İş İstasyonu](Windows/README.md "Windows")
