@@ -40,8 +40,10 @@ Kubernetes içerisinde servisler birbirleri işin referans verirken;
 ```console
 mysql.mysql.svc.cluster.local
 ```
+# Test
+Bu kısımda, kendi kullandığım komponentlerin deploy edilmesi için gerekli bilgileri veriyorum. Bende şu anda 16GB RAM, Windows 10 ve birinci nesil i5 makine var ve tüm servislerin makine açıldığında up olması yaklaşık 5dk sürüyor. Buradaki yapıları geliştirme için kullandığım MacBook Pro ve sistem yönetimi için kullandığım Lenovo Notebook üzerinde çalışan Ubuntu 20.04 Desktop platformlarında da test ediyorum zorluk yaşanmaması adına. Şu ana kadar bir sorun görmedim, konteynır kullanımı tam da istediğim gibi platformlar ve donanımlar arasında oldukça rahat geçiş sağlıyor.
 # Çalışan Makine
-Bu kısımda, kendi kullandığım komponentlerin deploy edilmesi için gerekli bilgileri veriyorum. Bende şu anda 16GB RAM, Windows 10 ve birinci nesil i5 mekine var ve tüm servislerin makine açıldığında up olması yaklaşık 5dk sürüyor. Tüm servisler çalışırken makinedeki durum ise aşağıdaki gibi..
+Tüm servisler çalışırken makinedeki durum ise aşağıdaki gibi..
 ## Nodes
 ```console
 C:\Users\dogan\Documents\Projects\TechDocs>kubectl get nodes
