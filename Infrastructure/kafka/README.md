@@ -33,7 +33,7 @@ komutunu kullanabilirsiniz.
 minikube service -n kafka-ca1 kafka-manager --url
 ```
 yukarıdaki komutla verilen adrese web browser üzerinden erişerek, konsoldan yeni bir cluster oluşturup, zookeper için 
-``console
+```console
 zookeeper-service:2181
 ```
 kullanmalısınız. Zira deployment sırasında verdiğimiz zookeper servis ismi ve portu bu şekilde.

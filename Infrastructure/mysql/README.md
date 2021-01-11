@@ -24,7 +24,7 @@ persistentvolume/mysql56-pv-volume created
 persistentvolumeclaim/mysql56-pv-claim created
 service/mysql56 created
 deployment.apps/mysql56 created
-````
+```
 komutu ile oluşturabilirsiniz.
 # Komut çalıştırma
  MySQL komutları çalıştırmak için;

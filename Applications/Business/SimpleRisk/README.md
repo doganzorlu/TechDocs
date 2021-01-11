@@ -32,7 +32,7 @@ Peki bu servise nasıl erişeceğiz ? Hemen daha önce öğrendiklerimizi hatır
 SimpleRisk % minikube service -n simplerisk simplerisk --url
 http://192.168.99.101:30448
 http://192.168.99.101:32567
-````
+```
 komutu ile erişim url si üzerinden erişebiliriz. http ile bağlandığınız port https e yönlendirecektir. Sertifika hatasını gözardı edebilirsiniz. Unutmadan default admin hesabı admin:admin
 ![Simplerisk Ana Ekranı](assets/en/images/simplerisk.png "Simplerisk Ana Ekranı")
 Bu uygulamanın kullanımı ile ilgili detaylı bir çalışmayı yakında yayınlayacağım. Şimdilik herkesin kendi makinesinde çalışabilir duruma gelmesi inceleme açısından yararlı olacaktır.

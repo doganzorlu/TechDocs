@@ -4,3 +4,4 @@ Bu depo, bir geliştirici ve admin olarak kullandığım ve faydalı olduğunu d
 
 * [İş İstasyonları](Workstations "İş İstasyonu Yapılandırmaları")
 * [Altyapı Bileşenleri](Infrastructure "Altyapı Bileşenleri")
+* [Uygulama Yazılımları](Applications "Uygulama Yazılımları")
