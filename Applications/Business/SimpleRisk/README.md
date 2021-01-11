@@ -7,7 +7,7 @@ Kendi makinemizde kendi projemizin risklerini yönetmek üzere bir kurulum anlat
 ## Database
 Infrastructure klasöründe yer alan MySQL servisinin deploy edilmiş olduğunu ve çalışır durumda olduğunu kabul ederek başlıyoruz.
 
-##Simplerisk
+## Simplerisk
 Öncelikle simplerisk için oluşturulan configmap içindeki **SIMPLERISK_DB_HOSTNAME** anahtarının doğru servisi gösterdiğinden emin olmalısınız. Eğer mysql örneğinizin servis adı farklı ise bu konuda değişiklik yapmalısınız. mysql56 yı uyumluluk gereksinimi nedeni ile kullandık. configmap içinde mysql admin parolasını vererek veritabanını kendisinin oluşturmasını sağladık. Aksi takdirde schema yı simplerisk den indirip kendimiz import etmemiz gerekiyor.
 
 * Kendime Not: Uygun bir zamanda özel bir image oluşturmak gerek. 
