@@ -30,6 +30,16 @@ pgadmin      LoadBalancer   10.96.60.57    10.96.60.57    80:30248/TCP     5d17h
 postgres     LoadBalancer   10.98.200.91   10.98.200.91   5432:31484/TCP   6d18h
 ```
 komutunda görebileceğiniz gibi external ip ler hazır ve yönlendirilmiş durumda. 
+# DNS Çözümleme
+Kubernetes içerisinde servisler birbirleri işin referans verirken;
+```console
+<servis>.<namespace>.svc.cluster.local
+```
+şeklinde dns yolu izlerler. Zira kurulu clusterımız cluster.local domainini kullanıyor.
+Örnek:
+```console
+mysql.mysql.svc.cluster.local
+```
 # Çalışan Makine
 Bu kısımda, kendi kullandığım komponentlerin deploy edilmesi için gerekli bilgileri veriyorum. Bende şu anda 16GB RAM, Windows 10 ve birinci nesil i5 mekine var ve tüm servislerin makine açıldığında up olması yaklaşık 5dk sürüyor. Tüm servisler çalışırken makinedeki durum ise aşağıdaki gibi..
 ## Nodes

@@ -13,7 +13,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/data"
+    path: "/data/gitea"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1

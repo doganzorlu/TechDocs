@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simplerisk
+  labels:
+    app: simplerisk
+  namespace: simplerisk
+spec:
+  selector:
+    matchLabels:
+      app: simplerisk
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: simplerisk
+        tier: frontend
+    spec:
+      containers:
+      - image: wolfangaukang/simplerisk-minimal
+        name: simplerisk
+        envFrom:
+          - configMapRef:
+              name: simplerisk-config
+        ports:
+        - containerPort: 80
+          name: simplerisk
+        volumeMounts:
+            - mountPath: /var/www
+              name: simplerisk
+      volumes:
+        - name: simplerisk
+          persistentVolumeClaim:
+            claimName: simplerisk-pv-claim

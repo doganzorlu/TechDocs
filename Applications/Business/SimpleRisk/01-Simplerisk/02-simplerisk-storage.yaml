@@ -1,31 +1,31 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: postgres-pv-volume
+  name: simplerisk-pv-volume
   labels:
     type: local
-    app: postgres
-  namespace: postgres
+    app: simplerisk
+  namespace: simplerisk
 spec:
   storageClassName: manual
   capacity:
-    storage: 5Gi
+    storage: 1Gi
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/postgres"
+    path: "/data/simplerisk"
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: postgres-pv-claim
+  name: simplerisk-pv-claim
   labels:
-    app: postgres
-  namespace: postgres
+    app: simplerisk
+  namespace: simplerisk
 spec:
   storageClassName: manual
   accessModes:
     - ReadWriteMany
   resources:
     requests:
-      storage: 5Gi
+      storage: 1Gi
