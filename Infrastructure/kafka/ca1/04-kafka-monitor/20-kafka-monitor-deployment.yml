@@ -5,7 +5,7 @@ metadata:
   name: kafka-monitor
   annotations:
   labels:
-    app: kafka-
+    app: kafka-ca1
   namespace: kafka-ca1
 spec:
   ports:
