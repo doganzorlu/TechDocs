@@ -441,10 +441,14 @@ bağlantısıdan indirip c:\bin klasörüne koyabilirsiniz (ya da siz nereye ist
 Artık minikube kurmaya hazırız.
 
 ```cosole
-C:\bin> minikube start --driver=virtualbox
+C:\bin> minikube start --driver=virtualbox --cpus 4 --memory 8192 --nat-nic-type=Am79C973 --host-only-nic-type=Am79C973
 ```
 
-komutu ile makinemizde kurulu VirtualBox ı kullanarak kendi image dosyasını indirip kendi VM ini oluşturacaktır. Driver parametresini vermezseniz kendisi anlayacaktır. Bu kadar. Hyper-V tavsiye etmiyorum zira cluster ile ilgili her komut için mutlaka "run as admin" gerektiriyor. İstediğiniz kadar kullanıcınızı hyper-v yöneticilerine ekleyin, değişmiyor.
+komutu ile makinemizde kurulu VirtualBox ı kullanarak kendi image dosyasını indirip kendi VM ini oluşturacaktır. Driver parametresini vermezseniz kendisi anlayacaktır. Bu kadar. Hyper-V tavsiye etmiyorum zira cluster ile ilgili her komut için mutlaka "run as admin" gerektiriyor. İstediğiniz kadar kullanıcınızı hyper-v yöneticilerine ekleyin, değişmiyor. NIC tipleri, işlemci sayısı ve bellek dağıtacağınız servis sayısına göre değişecektir. Bellek miktarı ile cpu sayısını sonradan değiştiremezsiniz. Mutlaka mevcut cluster'ı kaldırıp yeniden kurmanız gerekir.
+
+**ÖNEMLİ NOT**
+
+Windows üzerinde virtio sürücüsü ciddi performans problemi oluşturuyor. Bu nedenle nic tiplerini yukarıdaki gibi kullanmanız önemli.
 
 Bu projenin kök dizininde Infrastructure diye bir klasör göreceksiniz. Haydi oradaki mysql servisini deploy edelim;
 
