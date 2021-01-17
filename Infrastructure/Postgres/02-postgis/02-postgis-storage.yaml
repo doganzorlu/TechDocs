@@ -1,0 +1,31 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: postgis-pv-volume
+  labels:
+    type: local
+    app: postgis
+  namespace: postgres
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 5Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/data/postgis"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgis-pv-claim
+  labels:
+    app: postgis
+  namespace: postgres
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
