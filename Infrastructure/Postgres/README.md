@@ -11,3 +11,13 @@ Bu bölümde postgres veritabanı ve pgadmin4 yöneticisi postgres namespace iç
     mountPath: /scrub
 ```
 gibi bir konteynera dizini bağlayıp silmeniz gerekecektir.
+
+# Login
+
+Kurulum için superuser olarak **admin** kullanıcısı verilmiştir. Siz bunu configmap dosyaları içinden değiştirebilirsiniz. psql bağlantısı için;
+
+```console
+psql -u admin -d postgres
+```
+
+şeklinde giriş yapabilirsiniz. Zira postgres rol olarak oluşturulmamaktadır.
