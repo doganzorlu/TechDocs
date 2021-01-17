@@ -17,7 +17,7 @@ gibi bir konteynera dizini bağlayıp silmeniz gerekecektir.
 Kurulum için superuser olarak **admin** kullanıcısı verilmiştir. Siz bunu configmap dosyaları içinden değiştirebilirsiniz. psql bağlantısı için;
 
 ```console
-psql -u admin -d postgres
+psql -U admin -d postgres
 ```
 
 şeklinde giriş yapabilirsiniz. Zira postgres rol olarak oluşturulmamaktadır.
