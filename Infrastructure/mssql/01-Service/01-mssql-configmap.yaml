@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mssql-config
+  labels:
+    app: mssql
+  namespace: mssql
+data:
+  ACCEPT_EULA: 'Y'
+  SA_PASSWORD: 'MinikubeStr0ng!Passw0rd'
+  

@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mssql
+  namespace: mssql
+spec:
+  selector:
+    matchLabels:
+      app: mssql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mssql
+    spec:
+      containers:
+      - image: mcr.microsoft.com/mssql/server:2019-latest
+        name: mssql
+        ports:
+        - containerPort: 1433
+          name: mssql
+        envFrom:
+            - configMapRef:
+                name: mssql-config
+        volumeMounts:
+        - name: mssql-persistent-storage
+          mountPath: /var/lib/mssql
+      volumes:
+      - name: mssql-persistent-storage
+        persistentVolumeClaim:
+          claimName: mssql-pv-claim
