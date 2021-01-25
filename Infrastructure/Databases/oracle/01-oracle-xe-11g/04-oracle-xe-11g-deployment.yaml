@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: oracle-xe-11g
+  namespace: oracle-xe-11g
+spec:
+  selector:
+    matchLabels:
+      app: oracle-xe-11g
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: oracle-xe-11g
+    spec:
+      containers:
+      - image: oracleinanutshell/oracle-xe-11g:latest
+        name: oracle-xe-11g
+        ports:
+        - containerPort: 1433
+          name: oracle-xe-11g
+        envFrom:
+            - configMapRef:
+                name: oracle-xe-11g-config
+        volumeMounts:
+        - name: oracle-xe-11g-persistent-storage
+          mountPath: /var/lib/oracle-xe-11g
+      volumes:
+      - name: oracle-xe-11g-persistent-storage
+        persistentVolumeClaim:
+          claimName: oracle-xe-11g-pv-claim

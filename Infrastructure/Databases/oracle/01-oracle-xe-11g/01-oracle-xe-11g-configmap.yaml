@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: oracle-xe-11g-config
+  labels:
+    app: oracle-xe-11g
+  namespace: oracle-xe-11g
+data:
+  ORACLE_ALLOW_REMOTE: 'true'
+  ORACLE_DISABLE_ASYNCH_IO: 'true'
+  ORACLE_ENABLE_XDB: 'true'
