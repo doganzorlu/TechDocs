@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: react-sample-dev-config
+  labels:
+    app: react-sample-dev
+  namespace: react-sample-dev
+data:
+  NODE_APP_URL: "http://localhost:8080"
+  PORT: "80"
+  

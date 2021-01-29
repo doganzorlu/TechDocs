@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: react-sample-dev
+  labels:
+    app: react-sample-dev
+  namespace: react-sample-dev
+spec:
+  ports:
+    - port: 80
+      name: "http"
+  selector:
+    app: react-sample-dev
+    tier: frontend
+  type: LoadBalancer

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-sample-dev
+  labels:
+    app: react-sample-dev
+  namespace: react-sample-dev
+spec:
+  selector:
+    matchLabels:
+      app: react-sample-dev
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: react-sample-dev
+        tier: frontend
+    spec:
+      containers:
+      - image: localhost:5000/react-sample-dev:latest
+        name: react-sample-dev
+        envFrom:
+          - configMapRef:
+              name: react-sample-dev-config
+        ports:
+        - containerPort: 80
+          name: react-s-dev
+        volumeMounts:
+            - mountPath: /data
+              name: react-sample-dev
+      volumes:
+        - name: react-sample-dev
+          persistentVolumeClaim:
+            claimName: react-sample-dev-pv-claim
