@@ -30,6 +30,15 @@ Bu aşamada geliştiriciler ve devops adminleri için rahat bir ortam oluşturac
 
 Benim geliştirme yaparken sürekli kullandığım bu editörden öte uygulama ile sistem içinde düzenleyeceğimiz tüm metin dosyalarını çok kolaylıkla düzenleyebileceğiz.
 
+### brew
+
+Homebrew sıkça lazım olacak. Kurulum için;
+
+```console
+dogan@MBP ~ % /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+işinizi görecektir.
+
 ### iTerm2
 
 Ardından daha etkin bir terminal kullanımı için;
