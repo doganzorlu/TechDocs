@@ -12,7 +12,7 @@ Bu makalenin iki sürümü var. Birinci sürümü Windows üzerinde oluşturma, 
 
 Makalenin sonunda ulaşacağımız sistem aşağıda şematize edilmiş kurguda olacak:
 
-![Altyapı Genel Görünümü](assets/en/images/overview.png "Altyapı Genel Görünümü")
+![Altyapı Genel Görünümü](../Windows/assets/en/images/overview.png "Altyapı Genel Görünümü")
 
 Gerekli olan temel donanım sadece 16GB ram, en az birinci nesil e5 makine ve 250GB disk. Tüm sistemler sürekli açık olmayacak bu nedenle daha fazla donanıma ihtiyaç olmayacaktır. Development aşamasında biraz IDE için, birkaç tane konteyner için ram (db ve mikro servisler için) gerekecek. İşletim sistemi olarak ise 64bit bir Windows 10 ihtiyacımız var.
 
@@ -65,7 +65,7 @@ ile poetry yi de kurduk mu python development hazır.
 
 Sırada NodeJS kurulumu var. https://nodejs.org adresinden ulaşıp kurulumu yapıyoruz.
 
-![NodeJS İndirme Sayfası](assets/en/images/nodejsdownload.png "NodeJS İndirme Sayfası")
+![NodeJS İndirme Sayfası](../Windows/assets/en/images/nodejsdownload.png "NodeJS İndirme Sayfası")
 
 Ben genelde LTS sürümleri kullanıyorum. Gecelik sürümleri denediğim bir başka makinem daha var. Denemelerimi orada yapıyorum. Bu arada node için doğal modülleri derlemek gerekirse gerekli araçları yüklemesini kurulum sırasında seçebiliriz. Bunu seçerseniz diğer araç gereçlerle birlikte chocolatey (Hatırladınız sanırım) de kurulacak ve sistemde gerekli tüm yamalar yapılacak, kendisine gerekli python kendi extension ları içine kurulacak ve gerekli yetkilendirmeler powershell için otomatik olarak oluşturulacaktır. Komple bir paket yöneticisi olduğu için oldukça fazla değişiklik yapacaktır. Bu makinenin kurulumu bitince günlük tam image backup alacağız ve süreklilik konusunu çözeceğiz. Zira makine kurulumuna bağlı zaman kaybetmek istemiyorum.
 
