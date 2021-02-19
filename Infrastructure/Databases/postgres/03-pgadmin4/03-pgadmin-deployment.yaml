@@ -21,7 +21,7 @@ spec:
               name: pgadminstorage
           env:
            - name: PGADMIN_DEFAULT_EMAIL
-             value: "admimn@abuse.org"
+             value: "admin@abuse.org"
            - name: PGADMIN_DEFAULT_PASSWORD
              value: "admin123"
            - name: PGADMIN_PORT
