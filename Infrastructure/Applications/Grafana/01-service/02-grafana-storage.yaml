@@ -1,28 +1,28 @@
-kind: PersistentVolume
 apiVersion: v1
+kind: PersistentVolume
 metadata:
-  name: pgadmin-pv-volume
+  name: grafana-pv-volume
   labels:
     type: local
-    app: pgadmin
-  namespace: postgres
+  namespace: grafana
 spec:
   storageClassName: manual
   capacity:
-    storage: 5Gi
+    storage: 20Gi
   accessModes:
-    - ReadWriteMany
+    - ReadWriteOnce
   hostPath:
-    path: "/data/pgadmin"
+    path: "/data/grafana"
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: pgadmin-persistent-volume-claims-cfg
-  namespace: postgres
+  name: grafana-pv-claim
+  namespace: grafana
 spec:
+  storageClassName: manual
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 1Gi
+      storage: 20Gi

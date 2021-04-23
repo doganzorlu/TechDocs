@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-config
+  labels:
+    app: grafana
+  namespace: grafana
+data:
+  ACCEPT_EULA: 'Y'
+  SA_PASSWORD: 'MinikubeStr0ng!Passw0rd'
+  
