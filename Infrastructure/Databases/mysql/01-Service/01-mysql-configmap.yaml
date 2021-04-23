@@ -7,6 +7,6 @@ metadata:
   namespace: mysql
 data:
   MYSQL_ROOT_PASSWORD: admin123
-  PMA_HOST: mysql
+  PMA_HOSTS: mysql,mysql56,mysql57
   PMA_PORT: "3306"
   

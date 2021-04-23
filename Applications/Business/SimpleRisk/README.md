@@ -26,6 +26,20 @@ satırını pasif hale getirip;
 kubectl apply -f 01-Simplerisk
 ```
 komutunu vermemiz yeterli olacaktır.
+
+Kullanılan MySQL içinde eğer sql_mode ONLY_FULL_GROUP_BY ise bu sorun oluşturacaktır. Global olarak devre dışı bırakılması yeterlidir. Bu dökümanla verilen mysql57 konteynerında bunu yapmak için;
+
+```console
+% kubectl run -it --rm --image=mysql:latest --restart=Never mysql-client -- mysql -h mysql57.mysql.svc.cluster.local -padmin123
+<enter>
+mysql> 
+```
+komutuyla gelen konsolda;
+
+```SQL
+SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''));
+```
+komutunu vermeniz yeterli olacaktır.
 ## Servise Erişim
 Peki bu servise nasıl erişeceğiz ? Hemen daha önce öğrendiklerimizi hatırlayalım. LoadBalancer tipinde bir servisimiz var burada da. tunnel açıp doğrudan external IP bilgisi ile erişebiliriz. Ya da;
 ```console
