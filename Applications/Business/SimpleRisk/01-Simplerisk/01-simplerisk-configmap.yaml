@@ -8,6 +8,6 @@ metadata:
 data:
   FIRST_TIME_SETUP: "1"
   FIRST_TIME_SETUP_PASS: "admin123"
-  SIMPLERISK_DB_HOSTNAME: "mysql56.mysql.svc.cluster.local"
+  SIMPLERISK_DB_HOSTNAME: "mysql57.mysql.svc.cluster.local"
   SIMPLERISK_DB_PASSWORD: "P@ssw0rd.321"
   
