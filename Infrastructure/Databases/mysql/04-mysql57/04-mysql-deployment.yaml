@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql57
+  namespace: mysql
+spec:
+  selector:
+    matchLabels:
+      app: mysql57
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: mysql57
+    spec:
+      containers:
+      - image: mysql:5.7
+        name: mysql57
+        ports:
+        - containerPort: 3306
+          name: mysql
+        envFrom:
+            - configMapRef:
+                name: mysql-config
+        volumeMounts:
+        - name: mysql57-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: mysql57-persistent-storage
+        persistentVolumeClaim:
+          claimName: mysql57-pv-claim
