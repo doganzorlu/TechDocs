@@ -19,7 +19,7 @@ spec:
         tier: frontend
     spec:
       containers:
-      - image: wolfangaukang/simplerisk-minimal
+      - image: simplerisk/simplerisk-minimal
         name: simplerisk
         envFrom:
           - configMapRef:
