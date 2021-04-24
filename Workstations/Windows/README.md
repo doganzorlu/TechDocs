@@ -115,7 +115,7 @@ defaults anahtarı List içindeki tüm girdilerde ortak olarak çalışır. Herh
 
 ## Git
 
-VSCode u ubuntu alt sisteminden çalıştırmayacağımız için (bazen bu metodu da kullanıyorum, o durumda yapılandırılacak sistem windows yerine ubuntu alt sistemi oluyor) git kurmamız için bulunmaz zaman şu an. Ben git kullanıyorum siz başka birşey kullanıyorsanız o sistemin istemcisini kurabilirsiniz. Adresimiz https://git-svn.com adresinden uygulamayı indirip kuruyoruz.
+VSCode u ubuntu alt sisteminden çalıştırmayacağımız için (bazen bu metodu da kullanıyorum, o durumda yapılandırılacak sistem windows yerine ubuntu alt sistemi oluyor) git kurmamız için bulunmaz zaman şu an. Ben git kullanıyorum siz başka birşey kullanıyorsanız o sistemin istemcisini kurabilirsiniz. Adresimiz https://git-scm.com adresinden uygulamayı indirip kuruyoruz.
 
 ![GIT Ana Sayfası](assets/en/images/githomepage.png "GIT Anasayfası")
 
