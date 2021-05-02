@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ocsinventory
+  labels:
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  selector:
+    matchLabels:
+      app: ocsinventory
+      tier: frontend
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: ocsinventory
+        tier: frontend
+    spec:
+      containers:
+      - image: ocsinventory/ocsinventory-docker-image:latest
+        name: ocsinventory
+        envFrom:
+          - configMapRef: { name: ocsinventory-config }
+        ports:
+        - containerPort: 80
+          name: ocsinventory
+        - containerPort: 443
+          name: ocsinventoryssl
+        volumeMounts:
+            - mountPath: /usr/share/ocsinventory-reports/ocsreports/download
+              name: ocsdownload
+            - mountPath: /etc/ocsinventory-reports
+              name: ocssrv
+            - mountPath: /var/lib/ocsinventory-reports
+              name: ocslib
+      volumes:
+        - name: ocsdownload
+          persistentVolumeClaim:
+            claimName: ocsinventory-pv-claim-download
+        - name: ocssrv
+          persistentVolumeClaim:
+            claimName: ocsinventory-pv-claim-srv
+        - name: ocslib
+          persistentVolumeClaim:
+            claimName: ocsinventory-pv-claim-lib

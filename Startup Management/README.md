@@ -6,6 +6,6 @@ Bu bölümde, bir ürün geliştiren kişi, ekip veya şirket her ne ise bir ür
 
 Takip eden bölümlerde bu çerçevede verilmiş faaliyetlerle ilgili deneyimlediğim ürünler özelinde değerlendirmelerim olacak. Tabii ki burada bahsedeceğim ürünleri değindikçe Application klasöründe bulunabiliyor olacak ve kolay yoldan deneyimleme fırsatı bulacaksınız.
 
-İlk kavramımız **Risk Yönetimi** olacak ve bu konudaki aracımız da [SimpleRisk](../Applications/Business/SimpleRisk "SimpleRisk").
+İlk kavramımız **Risk Yönetimi** olacak ve bu konudaki aracımız da [SimpleRisk](../Applications/Business/SimpleRisk/README.md "SimpleRisk").
 
 

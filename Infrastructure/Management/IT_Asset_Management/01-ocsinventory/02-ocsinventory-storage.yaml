@@ -1,0 +1,95 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ocsinventory-pv-volume-download
+  labels:
+    type: local
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/data/ocsinventory/download"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ocsinventory-pv-claim-download
+  labels:
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ocsinventory-pv-volume-srv
+  labels:
+    type: local
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/data/ocsinventory/srv"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ocsinventory-pv-claim-srv
+  labels:
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: ocsinventory-pv-volume-lib
+  labels:
+    type: local
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/data/ocsinventory/lib"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ocsinventory-pv-claim-lib
+  labels:
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi

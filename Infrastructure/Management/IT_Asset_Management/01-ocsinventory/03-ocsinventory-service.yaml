@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ocsinventory
+  labels:
+    app: ocsinventory
+  namespace: assetmanagement
+spec:
+  ports:
+    - port: 80
+      name: "srhttp"
+    - port: 443
+      name: "srhttps"
+  selector:
+    app: ocsinventory
+    tier: frontend
+  type: LoadBalancer

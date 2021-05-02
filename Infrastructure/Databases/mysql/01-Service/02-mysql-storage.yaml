@@ -13,6 +13,7 @@ spec:
     - ReadWriteOnce
   hostPath:
     path: "/data/mysql"
+  persistentVolumeReclaimPolicy: Retain
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim

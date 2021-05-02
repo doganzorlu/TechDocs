@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ocsinventory-config
+  labels:
+    app: ocsinventory
+  namespace: assetmanagement
+data:
+  OCS_DB_NAME : ocsweb
+  OCS_DB_SERVER: mysql57.mysql.svc.cluster.local
+  OCS_DB_USER : ocs
+  OCS_DB_PASS : P@ssw0rd.321
+  TZ: Europe/Istanbul
+
