@@ -33,6 +33,7 @@ mysql> grant all privileges on ocsweb.* to ocs@'%' identified by 'P@ssw0rd.321';
 Artık konteynerlarımızı oluşturabiliriz;
 
 ```console
+# kubectl apply -f 00-namespace
 # kubectl apply -f 01-ocsinventory
 configmap/ocsinventory-config created
 persistentvolume/ocsinventory-pv-volume created
