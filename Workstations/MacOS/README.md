@@ -1,21 +1,3 @@
-# MacOS İş İstasyonu
-
-Bu bölümde, yazılım geliştirme ekiplerince kullanılabilecek bir "İdeal" MacOS iş istasyonu kurulumu ile ilgili uygulama örneği bulacaksınız. 
-
-# Başlarken
-
-Selamlar,
-
-Öncelikle bu makaleyi neden yazıyorum onu bir açıklayayım. Sürekli bir şekilde hem development hem de devops için platformlar kurup duruyorum. En nihayetinde bir seferini de kayıt altına alayım da belki bu konuda referans arayan birisi olur işine yarar diye bu akışı kayıt altına almak istedim.
-
-Bu makalenin iki sürümü var. Birinci sürümü Windows üzerinde oluşturma, ikincisi ise Linux üzerinde oluşturmayı anlatıyor.
-
-Makalenin sonunda ulaşacağımız sistem aşağıda şematize edilmiş kurguda olacak:
-
-![Altyapı Genel Görünümü](../Windows/assets/en/images/overview.png "Altyapı Genel Görünümü")
-
-Gerekli olan temel donanım sadece 16GB ram, en az birinci nesil e5 makine ve 250GB disk. Tüm sistemler sürekli açık olmayacak bu nedenle daha fazla donanıma ihtiyaç olmayacaktır. Development aşamasında biraz IDE için, birkaç tane konteyner için ram (db ve mikro servisler için) gerekecek. İşletim sistemi olarak ise 64bit bir Windows 10 ihtiyacımız var.
-
 # Kurulum
 
 ## Temel Kurulum
@@ -52,13 +34,13 @@ ilgili uygulamayı kurup çalıştıralım. Uygulamanın ayarlarında profile i�
 Yerleşik olarak python2 ile gelen MacOS içinde python3 kurmanın türlü türlü yolları var. Fakat ben en basit seçeneği kullandım;
 
 ```console
-python3
+dogan@MBP ~ % python3
 ```
 
 Bu komutla birlikte MacOS yerleşik geliştirme platformu kurucusu sizin için python ve pip için v3 kurulumlarını yapacaktır. Bu söylediğim Big Sur için geçerli. Daha önceki sürümlerde python sitesinden kurulumu indirip kurmak gerekecektir. Ardından;
 
 ```console
-pip3 install poetry
+dogan@MBP ~ % pip3 install poetry
 ```
 
 ile poetry yi de kurduk mu python development hazır.
@@ -85,21 +67,21 @@ Geliştirme için gerekli olacak birkaç tane servisin yapılandırma dosyaları
 
 Bu dosyayı /usr/local/bin dizine minikube olarak koyup ;
 ```console
-sudo chmod +x /usr/local/bin/minikube
+dogan@MBP ~ % sudo chmod +x /usr/local/bin/minikube
 ```  
 ile çalıştırılabilir dosya olarak işaretliyoruz.
 
 ```console
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
-sudo mv kubectl /usr/local/bin
-chmod +x /usr/local/bin/kubectl
+dogan@MBP ~ % curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/darwin/amd64/kubectl"
+dogan@MBP ~ % sudo mv kubectl /usr/local/bin
+dogan@MBP ~ % chmod +x /usr/local/bin/kubectl
 ```
 ile kubectl yi de hazır hale getiriryoruz.
 
 Artık minikube kurmaya hazırız.
 
 ```cosole
-C:\bin> minikube start --driver=virtualbox --cpus 2 --memory 4000
+minikube start --driver=virtualbox --cpus 2 --memory 4000
 ```
 
 komutu ile makinemizde kurulu VirtualBox ı kullanarak kendi image dosyasını indirip kendi VM ini oluşturacaktır. Driver parametresini vermezseniz kendisi anlayacaktır. Bu kadar. Bellek miktarı ile cpu sayısını sonradan değiştiremezsiniz. Mutlaka mevcut cluster'ı kaldırıp yeniden kurmanız gerekir.
