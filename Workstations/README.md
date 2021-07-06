@@ -12,6 +12,7 @@ Bu makalede üç ayrı işletim sistemi için bilgiler bulacaksınız;
 
 * Windows
 * Linux
+* Pardus
 * MacOS
 
 Makalenin sonunda ulaşacağımız sistem aşağıda şematize edilmiş kurguda olacak:
