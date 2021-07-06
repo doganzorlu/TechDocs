@@ -24,3 +24,4 @@ Gerekli olan temel donanım sadece 16GB ram, en az birinci nesil e5 makine ve 25
 * [Windows İş İstasyonu](Windows "Windows")
 * [MacOS İş İstasyonu](MacOS "MacOS")
 * [Linux İş İstasyonu](Linux "Linux")
+* [Pardus İş İstasyonu](Pardus "Pardus")
