@@ -34,13 +34,9 @@ Zaman içinde kernel güncellemeleri geldikçe kernel modülünün yeniden oluş
 
 Artık VirtualBox içinde neredeyse doğal bir Pardus kurulumu yapılmış olur.
 
-Pardus içinde CTRL+ALT+Ok tuşu
+Pardus içinde CTRL+ALT+Ok tuşu kombinasyonu ile konsollar içinde dolaşabilmek mümkündür. Konsollardan standart bir kurulumda sadece bir tanesi grafik arayüzü gösteriyor olacaktır.
 
-kombinasyonu ile konsollar içinde dolaşabilmek mümkündür. Konsollardan standart bir kurulumda sadece bir tanesi grafik arayüzü gösteriyor olacaktır.
-
-Paket yöneticisi olarak snap, ihtiyaç duyulan birkaç bileşenin kurulumunu oldukça kolaylaştıracaktır. Bunun için;
-
-Snap paket yöneticisi sıklıkla lazım olacak. Hızlıdan kurulumunu yapalım;
+Paket yöneticisi olarak snap, ihtiyaç duyulan birkaç bileşenin kurulumunu oldukça kolaylaştıracaktır. Bunun için hızlıdan kurulumunu yapalım;
 
 ```console
 user@machine:~$ sudo apt-get install snapd
@@ -48,8 +44,6 @@ user@machine:~$ sudo snap install core
 ```
 
 Bu aşamada snap binary lerine erişebilmek için bir logout yapmak gerekecek. 
-
-XFCE çok basit bir pencere yöneticisi. KDE Plasma için;
 
 XFCE oldukça basit ve temel pencere yönetimi özellikleri sunuyor. Bu nedenle KDE veya GNOME daha uygun bir pencere yöneticisi olacaktır. Özellikle çoklu ekran kullanımında XFCE saç baş yoldurabilir. KDE kurulumu için;
 
@@ -59,7 +53,6 @@ user@machine:~$ sudo apt install kde-full
 
 Komutu ile kuralım. Ardından logout edip ilk login ekranında sağ üstteki üç çizgi menüsünden plasma yı seçerek KDE’ye geçiş yapabiliriz.
 
-
 # Temel Yapılandırma
 
 ## Geliştirici Araçları
@@ -68,7 +61,7 @@ Bu aşamada geliştiriciler için rahat bir ortam oluşturacağız.
 
 ### Edge Browser Kurulumu:
 
-Bilindiği üzere MS EDGE, Chromium tabanlı açık kaynaklı bir browser.
+Bilindiği üzere MS EDGE, Chromium tabanlı bir browser ve sync özellikleri ile çoklu makinede kullananlar için gerekli olabilir.
 
 ```console
 user@machine:~$ sudo apt-get install curl
