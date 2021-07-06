@@ -317,6 +317,6 @@ Elbette bu makineyi kullanacak kişinin biraz da eğlenmeye hakkı var. Spotify 
 
 ```console
 user@machine:~$ sudo snap install spotify
-
+```
 # Sonuç
 Pardus makinemiz bir geliştirici ve/veya DevOps için giriş seviyesinde hazır hale geldi. Başka geliştirme araçları kullanan geliştiriciler de kendi ihtiyaçlarına göre araç gereç bunun üstüne yükleyebilirler. DevOps bu makine ile ne yapacak derseniz bir yerel registry, bir GIT surunucu ve bir image oluşturu hazırlayıp GIT üzerinden uygulama image leri hazırlayıp bunları yerel registry ye gönderip bu registry üzerinden delivery testleri yapabilir.
