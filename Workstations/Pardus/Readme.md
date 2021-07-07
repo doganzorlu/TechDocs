@@ -58,7 +58,15 @@ Komutu ile kuralım. Ardından logout edip ilk login ekranında sağ üstteki ü
 ## Geliştirici Araçları
 
 Bu aşamada geliştiriciler için rahat bir ortam oluşturacağız. 
+## Pencil
 
+Pencil çok güzel bir UIX aracı. Bu araç gerek mockup dizaynı ve gerekse akış tasarımı gibi pekçok konuda iyi bir çözüm sağlıyor. Kurmak için ise öncelikle **https://pencil.evolus.vn/Downloads.html** adresinden 64bit debian paketini indirip ardından;
+
+```console
+user@machine:~$ cd ~/İndirilenler
+user@machine:~$ sudo apt install ./pencil_3.1.0.ga_amd64.deb
+```
+ile kurulumunu yapmak mümkün. Artık geliştirme öncesi analizlerinizde kullanabileceğiniz harika bir aracınız oldu.
 ### Edge Browser Kurulumu:
 
 Bilindiği üzere MS EDGE, Chromium tabanlı bir browser ve sync özellikleri ile çoklu makinede kullananlar için gerekli olabilir.
@@ -211,7 +219,7 @@ user@machine:~$ sudo usermod -a -G libvirt <username>
 ```
 KVM sanallaştırma artık kullanıma hazır. 
 
-###
+### LXD
 LXD, Pardus içinde Pardus Kernel'ini kullanarak başka Linux ların konteyner halinde çalışmalarını sağlayan bir konteyner platformudur. Şimdi LXD kurulumunu da yapalım;
 ```console
 user@machine:~$ sudo snap install lxd
