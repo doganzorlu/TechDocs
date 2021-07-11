@@ -18,7 +18,7 @@ user@machine:~$ sudo reboot
 Eğer bir bir sanal makine olarak kurduysanız ilgili platformun misafir eklentilerini de yüklemeniz gerekecek. VirtualBox özelinde Virtualbox guest additions derleme için gerekli tüm paketler aşağıdaki şekilde yüklenir:
 
 ```console
-user@machine:~$ sudo apt-get install build-essentials dkms linux-headers-$(uname -r)
+user@machine:~$ sudo apt-get install build-essential dkms linux-headers-$(uname -r)
 ```
 
 Kernel modülünün derlenmesi, yerleşik sağlanan kurulumda bu kernel sürümü çin modül olmamasından kaynaklanmaktadır. Ardından VirtualBox Aygıtlar->Misafir Eklentileri CD Kalıbını Yerleştir seçeneği ile misafir eklentileri disk kalıbı bu sanal makineye bağlanır;
