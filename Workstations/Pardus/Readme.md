@@ -21,7 +21,7 @@ Eğer bir bir sanal makine olarak kurduysanız ilgili platformun misafir eklenti
 user@machine:~$ sudo apt-get install build-essential dkms linux-headers-$(uname -r)
 ```
 
-Kernel modülünün derlenmesi, yerleşik sağlanan kurulumda bu kernel sürümü çin modül olmamasından kaynaklanmaktadır. Ardından VirtualBox Aygıtlar->Misafir Eklentileri CD Kalıbını Yerleştir seçeneği ile misafir eklentileri disk kalıbı bu sanal makineye bağlanır;
+Kernel modülünün derlenmesi, yerleşik sağlanan kurulumda bu kernel sürümü çin modül olmamasından kaynaklanmaktadır. Ardından VirtualBox Aygıtlar->Misafir Eklentileri CD Kalıbını Yerleştir seçeneği ile misafir eklentileri disk kalıbı bu sanal makineye bağlanır (not otomatik olarak bağlanmadıysa mnt /dev/cdrom /media komutuile bağlayabilirsiniz);
 
 ```console
 user@machine:~$ cd /media/cdrom
