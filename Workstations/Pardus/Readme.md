@@ -25,7 +25,7 @@ Kernel modülünün derlenmesi, yerleşik sağlanan kurulumda bu kernel sürüm�
 
 ```console
 user@machine:~$ cd /media/cdrom
-user@machine:~$ sudo sh ./VBoxLinuxAdditions.sh
+user@machine:~$ sudo sh ./VBoxLinuxAdditions.run
 ```
 
 Önemli not:
