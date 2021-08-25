@@ -113,6 +113,7 @@ user@machine:~$ git config --global user.email <Eposta Adresiniz>
 Edge için microsoft pardus depolarını ayarlamıştık, VSCode da bu depoda yer alıyor;
 
 ```code
+user@machine:~$ sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/microsoft-vscode.list'
 user@machine:~$ sudo apt-get install code
 ```
 yeterli olacaktır.
