@@ -263,8 +263,7 @@ user@machine:~$ helm repo add rancher-latest https://releases.rancher.com/server
 user@machine:~$ helm repo update
 user@machine:~$ kubectl create namespace cert-manager
 user@machine:~$ kubectl create namespace cattle-system
-user@machine:~$ kubectl apply --validate=false -f 
-user@machine:~$ https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml
+user@machine:~$ kubectl apply --validate=false -f https://github.com/jetstack/cert-manager/releases/download/v1.0.4/cert-manager.crds.yaml
 user@machine:~$ helm install cert-manager jetstack/cert-manager --namespace cert-manager --version v1.0.4
 user@machine:~$ helm install rancher rancher-latest/rancher --namespace cattle-system --set hostname=rancher.<domain>
 ```
