@@ -200,6 +200,14 @@ user@machine:~$ sudo apt install npm
 ```
 Hepsi bu. Eğer birden fazla sürümle çalışma ihtiyacınız varsa **Node Version Manager** ile bu soruna kolay bir çözüm de bulabilirsiniz. Yolculuğumuzun üçte birlik kısmına yaklaştık diyebiliriz. Bu aşamadan sonra zaten elle tutulmaz olan sistemimizde daha da sanal ortamlar oluşturacağız. Herşey mış gibi olacak bu bölümde.
 
+## Ekran Kaydı
+
+Geliştirici olun ya da olmayın, ekran görüntüsü çekmek sıklıkla gerekli bir işlem. Uzun zamandır çoğumuzun kullandığı OBS Studio'yu da kuralım. Eminim çok gerekecek.
+```console
+user@machine:~$ sudo apt install obs-studio
+```
+Artık acayip fonksiyonel bir kayıt aracımız oldu. Kim bilir belki yarın öbür gün Youtuber olarak bile görebiliriz sizi :-)
+
 ## DevOps ve Backend Araçları
 
 Bu aşamada backend geliştiriciler ve DevOps insanları için rahat bir ortam oluşturacağız. Herşey tamam görünüyor. Makinemize doğal olarak kuracağımız neredeyse herşeyi kurduk. Bu aşamadan sonra gerekli olacak tüm gereksinimlerimiz (backend, database vs) için;
