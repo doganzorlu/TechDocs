@@ -87,11 +87,11 @@ Ardından daha etkin bir terminal kullanımı için ayarlar yapacağız. Önceli
 ```console
 user@machine:~$ sudo apt-get install terminator fonts-powerline
 ```
-komutunu kullanabilirsiniz. Ardından Andres Gongora tarafından hazırlanmış bir scripti bash için daha iyi bir görüntü için kullanacağız. **https://github.com/ChrisTitusTech/scripts/blob/master/fancy-bash-promt.sh** adresindeki bölümü;
+komutunu kullanabilirsiniz. Ardından Andres Gongora tarafından hazırlanmış bir scripti bash için daha iyi bir görüntü için kullanacağız. **https://github.com/ChrisTitusTech/scripts/blob/master/fancy-bash-promt.sh** adresindeki dosyayı home dizine .fancy-bash-prompt.sh olarak kaydedip;
 ```console
-user@machine:~$ vi ~/.bashrc
+user@machine:~$ echo "source ~/.fancy-bash-promt.sh" >> ~/.bashrc
 ```
-komutu ile açacağınız dosyanın en altına ekleyip değişikliği görmek için terminator uygulamasını tekrar çalıştırabilirsiniz. Ben vi kullanıyorum eğer kullanmayı bilmiyorsanız öğrenmenizi tavsiye ederim. Ancak isterseniz **nano** editörü de kullanabilirsiniz.
+komutu ile rc dosyasının sonuna .alışacak şekilde edliyoruz.
 
 ### GIT
 
