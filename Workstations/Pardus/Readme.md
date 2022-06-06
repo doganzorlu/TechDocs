@@ -168,7 +168,7 @@ user@machine:~$ sudo apt-get install clang cmake ninja-build pkg-config libgtk-3
 Android geliştirme için android studio ya ihtiyacımız olacak;
 
 ```console
-user@machine:~$ sudo snap install android-studio
+user@machine:~$ sudo snap install android-studio --classic
 ```
 SDK yüklemek için;
 
