@@ -144,6 +144,11 @@ user@machine:~$ sudo pip install poetry
 
 ```console
 user@machine:~$ sudo snap install flutter --classic
+```
+
+Bu aşamada reboot gerekiyor. Reboot sonrası;
+
+```console
 user@machine:~$ flutter sdk-path
 ```
 
