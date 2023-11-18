@@ -8,9 +8,11 @@ Bu aşamada geliştiriciler ve devops adminleri için rahat bir ortam oluşturac
 
 ### VSCode
 
-İlk olarak [BURAYA TIKLAYARAK](https://code.visualstudio.com "VSCode Sitesi") VSCode sitesinden VSCode uyglamasını indirip kuralım. 
+İlk olarak [BURAYA TIKLAYARAK](https://code.visualstudio.com "VSCode Sitesi") VSCode sitesinden VSCode uyglamasını indirip, zip içinden çıkan vscode uygulamasını Applications içine atalım. 
 
 Benim geliştirme yaparken sürekli kullandığım bu editörden öte uygulama ile sistem içinde düzenleyeceğimiz tüm metin dosyalarını çok kolaylıkla düzenleyebileceğiz.
+
+Visual Studio Code uygulamasını komut satırından da kullanabilmek için ise uygulamayı açıp Ctrl+Shipt+P tuşlarına basarak açılan command palette içinde "shell command" arayıp, buradan "Install 'code' command in PATH seçeneğini seçelim.
 
 ### brew
 
