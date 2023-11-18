@@ -365,7 +365,7 @@ tls:
 Artık traefik stack deploy edilmeye hazır.
 
 ```console
-dogan@pergen:~/certs$ docker stack deploy --compose-file traefik.yml
+dogan@pergen:~/certs$ docker stack deploy traefik --compose-file traefik.yml
 ```
 
 Servisin güncel durumunu;
@@ -440,7 +440,16 @@ networks:
   database:
     external: true
 ```
+Şimdi gerekli kalıcı depolama alanını oluşturalım;
 
+```console
+dogan@pergen:~/stacks$ mkdir -p /opt/datastore/mysql/mariadb 
+dogan@pergen:~/stacks$ mkdir -p /opt/datastore/mysql/mysql8
+```
+Stack deploy için de aşağıdaki komutu kullanabiliriz;
+```console
+dogan@pergen:~/stacks$ docker stack deploy mysql --compose-file mysql.yml
+```
 Haydi mysql için bir de client tarafı araç yükleyelim. Service mesh içinde zaten çözülür durumda olan servise host'tan erişelim;
 
 ```console
