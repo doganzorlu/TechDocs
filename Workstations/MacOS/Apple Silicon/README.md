@@ -34,7 +34,25 @@ Ardından daha etkin bir terminal kullanımı için;
 
 [BURAYA TIKLAYARAK](https://iterm2.com/ "iTerm2 Sitesi") 
 
-ilgili uygulamayı kurup çalıştıralım. Uygulamanın ayarlarında profile içinde session bölümünde git vb. entegrasyonları ayarlayacağınız bir bölüm var. Buradan ben git i aktifleştirdim.
+ilgili uygulamayı kurup çalıştıralım. Uygulamanın ayarlarında profile içinde session bölümünde git vb. entegrasyonları ayarlayacağınız bir bölüm var. Buradan ben git i aktifleştirdim. İsterseniz brew install iterm2 diyerek brew ile de kurabilirsiniz.
+
+Kendi kullandığım kişiselleştirmelerle ilgili birkaç küçük tüyo vereyim;
+
+Öncelikle iTerm2 Preferences bölümünden Appearance > General > Theme yi Minimal yaparak üstten kaybedilen alanı kazanabilirsiniz.
+
+İkinci olarak renk paleti olarak snazzy kullanabiliriz.
+```console
+dogan@MBP ~ % (curl -Ls https://raw.githubusercontent.com/sindresorhus/iterm2-snazzy/main/Snazzy.itermcolors > /tmp/Snazzy.itermcolors && open /tmp/Snazzy.itermcolors)
+```
+ile kurabilirsiniz. Ardından settings içindeki Profiles > Colors > Color Presets yolunu takip edip bu değeri snazzy olarak ayarlayabilirsiniz.
+
+Ayrıca ohmyzsh ile de birkaç küçük değişiklik yapabiliriz. Öncelikle kuralım bunları;
+
+```console
+dogan@MBP ~ % sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
+
+.zshrc dosyasında ZSH_THEME çevresel değişkenini ayarlayarak meşrebinize göre bir tema kullanabilirsiniz.  [BURAYA TIKLAYARAK](https://github.com/ohmyzsh/ohmyzsh/wiki/Themes "Temalar") kullanılabilir temaları görebilirsiniz. Ben clean tema tercih ediyorum. Böylelikle hem branch hem de komut çalıştırma zamanını bir arada görebiliyorum. zplug 
 
 ### Python
 
