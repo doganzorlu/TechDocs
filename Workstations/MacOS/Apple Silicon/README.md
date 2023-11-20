@@ -221,6 +221,9 @@ Artık docker kurulumu yapabiliriz ve ardından kullanıcımızı docker grubuna
 ```console
 dogan@pergen:~/ sudo apt-get install docker-ce docker-ce-cli containerd.io
 dogan@pergen:~/ sudo usermod -aG docker ${USER}
+```
+Bu aşamada logout edip tekrar bir login gerekecek. Ardından;
+```console
 dogan@pergen:~/ sudo docker swarm init
 dogan@pergen:~/ docker node ls
 ID                            HOSTNAME   STATUS    AVAILABILITY   MANAGER STATUS   ENGINE VERSION
@@ -265,9 +268,9 @@ dogan@pergen:~/ mkdir certs
 dogan@pergen:~/ cd certs
 dogan@pergen:~/certs$ 
 
-openssl genrsa -des3 -out ca.key 4096
-openssl req -new -x509 -days 3650 -key ca.key -out ca.crt
-openssl genrsa -out cert.key 2048
+dogan@pergen:~/certs$ openssl genrsa -des3 -out ca.key 4096
+dogan@pergen:~/certs$ openssl req -new -x509 -days 3650 -key ca.key -out ca.crt
+dogan@pergen:~/certs$ openssl genrsa -out cert.key 2048
 ```
 Şimdi bir request dosyası oluşturalım;
 
@@ -302,8 +305,9 @@ dogan@pergen:~/certs$ openssl x509 -req -in localdomain.csr -CA ca.crt -CAkey ca
 Artık .pem dosyalarını oluşturabiliriz;
 
 ```console
-dogan@pergen:~/certs$ openssl rsa -in cert.key -text > cert.pem
+dogan@pergen:~/certs$ openssl rsa -in cert.key -text > key.pem
 dogan@pergen:~/certs$ openssl x509 -inform PEM -in cert.crt > cert.pem
+dogan@pergen:~/certs$ sudo mv *.pem /opt/datastore/traefik/tools/certs
 ```
 
 CA sertifikasını scp ile yerele kopyalayıp keychain içinde trust olarak düzenlerseniz sertifika ile ilgili hata almazsınız. Özellikle servis-servis iletişiminde sorun yaşamamak için bu sertifikanın servis image içinde enjekte edilmesi gerekebilir.
@@ -332,10 +336,8 @@ services:
         - traefik.http.routers.traefik-public-https.rule=Host(`traefik.localdomain`)
         - traefik.http.routers.traefik-public-https.entrypoints=https
         - traefik.http.routers.traefik-public-https.tls=true
-        - traefik.http.routers.traefik-public-https.tls.certresolver=dcresolver
         - traefik.http.routers.traefik-public-https.tls.domains[0].main=traefik.localdomain
         - traefik.http.routers.traefik-public-https.service=api@internal
-        - traefik.http.routers.traefik-public-https.middlewares=authelia@docker
         - traefik.http.services.traefik-public.loadbalancer.server.port=8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -461,8 +463,8 @@ networks:
 Şimdi gerekli kalıcı depolama alanını oluşturalım;
 
 ```console
-dogan@pergen:~/stacks$ mkdir -p /opt/datastore/mysql/mariadb 
-dogan@pergen:~/stacks$ mkdir -p /opt/datastore/mysql/mysql8
+dogan@pergen:~/stacks$ sudo mkdir -p /opt/datastore/mysql/mariadb 
+dogan@pergen:~/stacks$ sudo mkdir -p /opt/datastore/mysql/mysql8
 ```
 Stack deploy için de aşağıdaki komutu kullanabiliriz;
 ```console
