@@ -93,10 +93,10 @@ Bize rosetta da lazım olacak. Hızlıdan kuralım;
 dogan@MBP ~ % softwareupdate --install-rosetta
 ```
 
-Flutter içinden xcode simulatöründe bir aydıt oluşturmak için minicik bir paket gerekli olacak. Bunu kurmak için;
+Flutter içinden xcode simulatöründe bir aygıt oluşturmak için minicik bir paket gerekli olacak. Bunu kurmak için;
 
 ```console
-dogan@MBP ~ % sudo gem install cocoapods
+dogan@MBP ~ % brew install cocoapods
 ```
 komutunu kullanacağız. 
 
